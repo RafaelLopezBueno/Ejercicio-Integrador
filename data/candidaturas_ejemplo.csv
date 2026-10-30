@@ -1,0 +1,16 @@
+id;titulo;empresa;estado;fechaPostulacion;enlace;notas
+1;Desarrollador Java Junior;Indra;pendiente;02/08/2026;https://www.indracompany.com/empleo/java-junior;Enviado CV desde el portal de empleo
+2;Analista Programador;Indra;entrevista;10/08/2026;https://www.indracompany.com/empleo/analista;Entrevista técnica el 20/08
+3;Backend Developer Spring Boot;Accenture;rechazado;14/08/2026;https://www.accenture.com/es-es/careers/backend;Rechazado tras la prueba técnica
+4;Desarrollador Full Stack;Capgemini;aceptado;18/08/2026;https://www.capgemini.com/es-es/empleo/fullstack;Oferta aceptada con incorporación en septiembre
+5;Prácticas Desarrollo Java;NTT Data;pendiente;21/08/2026;https://es.nttdata.com/careers/practicas-java;Contacto por LinkedIn
+6;Ingeniero de Software;Accenture;entrevista;25/08/2026;https://www.accenture.com/es-es/careers/ingeniero;Primera entrevista con RRHH
+7;Desarrollador Java Senior;Capgemini;rechazado;29/08/2026;https://www.capgemini.com/es-es/empleo/java-senior;Piden más de 5 años de experiencia
+8;Técnico de Soporte Aplicaciones;NTT Data;aceptado;03/09/2026;https://es.nttdata.com/careers/soporte;Aceptada tras dos entrevistas
+9;Desarrollador Web Junior;Indra;rechazado;07/09/2026;https://www.indracompany.com/empleo/web-junior;Sin respuesta tras 3 semanas
+10;QA Automation Engineer;Capgemini;pendiente;12/09/2026;https://www.capgemini.com/es-es/empleo/qa;Pendiente de recibir respuesta
+11;Desarrollador de APIs REST;NTT Data;entrevista;16/09/2026;https://es.nttdata.com/careers/apis-rest;Entrevista con el equipo técnico
+12;Junior DevOps;Accenture;pendiente;20/09/2026;https://www.accenture.com/es-es/careers/devops;Referido por un compañero
+13;Desarrollador Java Backend;Indra;aceptado;24/09/2026;https://www.indracompany.com/empleo/java-backend;Firma de contrato pendiente
+14;Programador Junior;Capgemini;entrevista;02/10/2026;https://www.capgemini.com/es-es/empleo/programador;Prueba de código la próxima semana
+15;Becario Ingeniería de Software;NTT Data;rechazado;09/10/2026;https://es.nttdata.com/careers/becario;Plazas cubiertas
