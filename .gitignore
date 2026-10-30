@@ -1,0 +1,12 @@
+target/
+.idea/
+*.iml
+.vscode/
+# Entregables que no van al repositorio
+*.pdf
+*.mp4
+*.mov
+*.mkv
+*.zip
+# Datos locales generados por la CLI
+data/candidaturas.txt
