@@ -24,6 +24,7 @@
                   <ToggleGroup fx:id="grupoNavegacion" />
                </toggleGroup>
             </ToggleButton>
+            <ToggleButton fx:id="btnEmpresas" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#irAEmpresas" styleClass="nav-button" text="Empresas" toggleGroup="$grupoNavegacion" />
          </children>
       </VBox>
    </left>

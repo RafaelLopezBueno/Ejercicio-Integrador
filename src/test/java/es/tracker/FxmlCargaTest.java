@@ -1,6 +1,7 @@
 package es.tracker;
 
 import es.tracker.config.DatabaseConfig;
+import es.tracker.ui.EmpresaFormController;
 import es.tracker.ui.MainController;
 import es.tracker.ui.Navigator;
 import es.tracker.ui.OfertaDetailController;
@@ -94,6 +95,28 @@ class FxmlCargaTest {
             return ((Label) contenidoDe(anfitrion).lookup("#lblTitulo")).getText();
         });
         assertEquals("Nueva candidatura", tituloAlta);
+    }
+
+    @Test
+    void cargaLasPantallasDeEmpresas() throws Exception {
+        String url = "jdbc:h2:mem:" + UUID.randomUUID() + ";MODE=MySQL;DB_CLOSE_DELAY=-1";
+        AppContext contexto = AppContext.crear(new DatabaseConfig(url, "sa", "", true));
+        contexto.importacion().importar(Path.of("data", "candidaturas_ejemplo.csv"));
+
+        StackPane anfitrion = enHiloFx(StackPane::new);
+        Navigator navegador = new Navigator(contexto, anfitrion);
+
+        int filas = enHiloFx(() -> {
+            navegador.mostrar(Vista.EMPRESAS);
+            return ((TableView<?>) anfitrion.lookup("#tabla")).getItems().size();
+        });
+        assertEquals(4, filas);
+
+        String nombre = enHiloFx(() -> {
+            navegador.mostrar(Vista.FORMULARIO_EMPRESA, (EmpresaFormController c) -> c.iniciar(1));
+            return ((TextField) contenidoDe(anfitrion).lookup("#txtNombre")).getText();
+        });
+        assertEquals("Indra", nombre);
     }
 
     private static Node contenidoDe(StackPane anfitrion) {

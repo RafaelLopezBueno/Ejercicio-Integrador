@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane fitToWidth="true" styleClass="scroll-limpio" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.tracker.ui.EmpresaFormController">
+   <content>
+      <VBox spacing="24.0" styleClass="contenido">
+         <children>
+            <VBox spacing="4.0">
+               <children>
+                  <Label fx:id="lblTitulo" styleClass="titulo-pagina" text="Nueva empresa" />
+                  <Label fx:id="lblSubtitulo" styleClass="subtitulo" text="Registra una empresa" />
+               </children>
+            </VBox>
+            <VBox spacing="16.0" styleClass="card">
+               <children>
+                  <GridPane hgap="16.0" vgap="14.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" />
+                        <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" />
+                     </columnConstraints>
+                     <children>
+                        <VBox spacing="6.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                           <children>
+                              <Label styleClass="etiqueta-campo" text="Nombre *" />
+                              <TextField fx:id="txtNombre" promptText="Indra" />
+                              <Label fx:id="errNombre" styleClass="mensaje-error" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="6.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                           <children>
+                              <Label styleClass="etiqueta-campo" text="Sector" />
+                              <TextField fx:id="txtSector" promptText="Consultoría tecnológica" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="6.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                           <children>
+                              <Label styleClass="etiqueta-campo" text="Web" />
+                              <TextField fx:id="txtWeb" promptText="https://www.indracompany.com" />
+                              <Label fx:id="errWeb" styleClass="mensaje-error" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="6.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <Label styleClass="etiqueta-campo" text="Fecha de registro *" />
+                              <DatePicker fx:id="dpRegistro" maxWidth="1.7976931348623157E308" promptText="dd/MM/yyyy" />
+                              <Label fx:id="errRegistro" styleClass="mensaje-error" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </GridPane>
+                  <Label fx:id="lblError" styleClass="mensaje-error" wrapText="true" />
+                  <HBox alignment="CENTER_RIGHT" spacing="12.0">
+                     <children>
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#cancelar" styleClass="btn-secundario" text="Cancelar" />
+                        <Button defaultButton="true" mnemonicParsing="false" onAction="#guardar" styleClass="btn-primario" text="Guardar empresa" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>

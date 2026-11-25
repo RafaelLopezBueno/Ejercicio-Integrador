@@ -6,7 +6,9 @@ package es.tracker.ui;
 public enum Vista {
     LISTADO("ofertas-list"),
     DETALLE("oferta-detail"),
-    FORMULARIO_OFERTA("oferta-form");
+    FORMULARIO_OFERTA("oferta-form"),
+    EMPRESAS("empresas"),
+    FORMULARIO_EMPRESA("empresa-form");
 
     private final String archivo;
 
