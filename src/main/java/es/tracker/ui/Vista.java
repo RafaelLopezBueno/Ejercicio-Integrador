@@ -8,7 +8,8 @@ public enum Vista {
     DETALLE("oferta-detail"),
     FORMULARIO_OFERTA("oferta-form"),
     EMPRESAS("empresas"),
-    FORMULARIO_EMPRESA("empresa-form");
+    FORMULARIO_EMPRESA("empresa-form"),
+    ENTREVISTAS("entrevistas");
 
     private final String archivo;
 

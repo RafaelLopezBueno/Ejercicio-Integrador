@@ -20,6 +20,8 @@ public class MainController {
     private ToggleButton btnOfertas;
     @FXML
     private ToggleButton btnEmpresas;
+    @FXML
+    private ToggleButton btnEntrevistas;
 
     public MainController(AppContext contexto) {
         this.contexto = contexto;
@@ -41,6 +43,12 @@ public class MainController {
     private void irAEmpresas() {
         btnEmpresas.setSelected(true);
         mostrar(Vista.EMPRESAS);
+    }
+
+    @FXML
+    private void irAEntrevistas() {
+        btnEntrevistas.setSelected(true);
+        mostrar(Vista.ENTREVISTAS);
     }
 
     private void mostrar(Vista vista) {

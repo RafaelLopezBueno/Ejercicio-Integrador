@@ -1,6 +1,9 @@
 package es.tracker;
 
 import es.tracker.config.DatabaseConfig;
+import es.tracker.model.Entrevista;
+import es.tracker.model.FiltroOfertas;
+import es.tracker.model.ResultadoEntrevista;
 import es.tracker.ui.EmpresaFormController;
 import es.tracker.ui.MainController;
 import es.tracker.ui.Navigator;
@@ -11,6 +14,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
@@ -20,6 +24,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
@@ -117,6 +122,28 @@ class FxmlCargaTest {
             return ((TextField) contenidoDe(anfitrion).lookup("#txtNombre")).getText();
         });
         assertEquals("Indra", nombre);
+    }
+
+    @Test
+    void laPantallaDeEntrevistasMuestraLaListaYCargaLaSeleccionEnElFormulario() throws Exception {
+        String url = "jdbc:h2:mem:" + UUID.randomUUID() + ";MODE=MySQL;DB_CLOSE_DELAY=-1";
+        AppContext contexto = AppContext.crear(new DatabaseConfig(url, "sa", "", true));
+        contexto.importacion().importar(Path.of("data", "candidaturas_ejemplo.csv"));
+        int idOferta = contexto.ofertas().buscar(FiltroOfertas.vacio()).getFirst().oferta().id();
+        contexto.entrevistas().guardar(new Entrevista(null, idOferta, LocalDate.of(2026, 10, 1), "técnica", "Nervios",
+                ResultadoEntrevista.PENDIENTE));
+
+        StackPane anfitrion = enHiloFx(StackPane::new);
+        Navigator navegador = new Navigator(contexto, anfitrion);
+
+        String tipo = enHiloFx(() -> {
+            navegador.mostrar(Vista.ENTREVISTAS);
+            TableView<?> tabla = (TableView<?>) anfitrion.lookup("#tabla");
+            assertEquals(1, tabla.getItems().size());
+            tabla.getSelectionModel().select(0);
+            return ((ComboBox<?>) anfitrion.lookup("#cmbTipo")).getValue().toString();
+        });
+        assertEquals("técnica", tipo);
     }
 
     private static Node contenidoDe(StackPane anfitrion) {
