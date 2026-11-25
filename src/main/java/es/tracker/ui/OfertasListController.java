@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableCell;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -25,15 +26,12 @@ import javafx.util.StringConverter;
 
 import java.io.File;
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Locale;
 
 /**
  * Listado de ofertas con filtros combinables, cambio de estado, borrado e importación de CSV.
  */
 public class OfertasListController {
 
-    private static final Locale ES = Locale.of("es", "ES");
     private static final String CLASE_ERROR = "campo-error";
 
     private final AppContext contexto;
@@ -76,6 +74,10 @@ public class OfertasListController {
     private MenuButton mnuEstado;
     @FXML
     private Button btnEliminar;
+    @FXML
+    private Button btnDetalle;
+    @FXML
+    private Button btnEditar;
 
     public OfertasListController(AppContext contexto, Navigator navegador) {
         this.contexto = contexto;
@@ -113,6 +115,29 @@ public class OfertasListController {
         limpiarErrores();
         filtroActual = FiltroOfertas.vacio();
         recargar();
+    }
+
+    @FXML
+    private void nueva() {
+        navegador.mostrar(Vista.FORMULARIO_OFERTA, (OfertaFormController controlador) -> controlador.iniciar(null));
+    }
+
+    @FXML
+    private void verDetalle() {
+        OfertaVista seleccion = tabla.getSelectionModel().getSelectedItem();
+        if (seleccion != null) {
+            int id = seleccion.oferta().id();
+            navegador.mostrar(Vista.DETALLE, (OfertaDetailController controlador) -> controlador.iniciar(id));
+        }
+    }
+
+    @FXML
+    private void editar() {
+        OfertaVista seleccion = tabla.getSelectionModel().getSelectedItem();
+        if (seleccion != null) {
+            int id = seleccion.oferta().id();
+            navegador.mostrar(Vista.FORMULARIO_OFERTA, (OfertaFormController controlador) -> controlador.iniciar(id));
+        }
     }
 
     @FXML
@@ -192,12 +217,8 @@ public class OfertasListController {
     }
 
     private BigDecimal leerSalario(TextField campo, String nombre) {
-        String texto = campo.getText() == null ? "" : campo.getText().trim();
-        if (texto.isEmpty()) {
-            return null;
-        }
         try {
-            return new BigDecimal(texto.replace(',', '.'));
+            return Formatos.decimal(campo.getText());
         } catch (NumberFormatException e) {
             campo.getStyleClass().add(CLASE_ERROR);
             throw new CandidaturaException("El salario " + nombre + " no es un número válido", e);
@@ -233,14 +254,27 @@ public class OfertasListController {
         colEmpresa.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().empresaNombre()));
         colEstado.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().oferta().estado().getTexto()));
         colEstado.setCellFactory(columna -> new CeldaEstado());
-        colFecha.setCellValueFactory(c -> new SimpleStringProperty(
-                c.getValue().oferta().fechaPostulacion().format(es.tracker.model.Candidatura.FORMATO_FECHA)));
-        colSalario.setCellValueFactory(c -> new SimpleStringProperty(formatearSalario(c.getValue().oferta().salario())));
+        colFecha.setCellValueFactory(c -> new SimpleStringProperty(Formatos.fecha(c.getValue().oferta().fechaPostulacion())));
+        colSalario.setCellValueFactory(c -> new SimpleStringProperty(Formatos.salario(c.getValue().oferta().salario())));
         colSalario.getStyleClass().add("columna-derecha");
         tabla.setPlaceholder(new Label("No hay candidaturas que mostrar."));
+        tabla.setRowFactory(t -> {
+            TableRow<OfertaVista> fila = new TableRow<>();
+            fila.setOnMouseClicked(evento -> {
+                if (evento.getClickCount() == 2 && !fila.isEmpty()) {
+                    verDetalle();
+                }
+            });
+            return fila;
+        });
 
-        mnuEstado.disableProperty().bind(tabla.getSelectionModel().selectedItemProperty().isNull());
-        btnEliminar.disableProperty().bind(tabla.getSelectionModel().selectedItemProperty().isNull());
+        var sinSeleccion = tabla.getSelectionModel().selectedItemProperty().isNull();
+        mnuEstado.disableProperty().bind(sinSeleccion);
+        btnEliminar.disableProperty().bind(sinSeleccion);
+        btnDetalle.disableProperty().bind(sinSeleccion);
+        btnEditar.disableProperty().bind(sinSeleccion);
+        dpDesde.setConverter(Formatos.convertidorFecha());
+        dpHasta.setConverter(Formatos.convertidorFecha());
     }
 
     private void configurarMenuEstado() {
@@ -249,10 +283,6 @@ public class OfertasListController {
             item.setOnAction(evento -> cambiarEstado(estado));
             mnuEstado.getItems().add(item);
         }
-    }
-
-    private static String formatearSalario(BigDecimal salario) {
-        return salario == null ? "—" : String.format(ES, "%,.0f €", salario);
     }
 
     /** Celda que muestra el estado como una etiqueta de color. */

@@ -26,6 +26,7 @@
                </children>
             </VBox>
             <Button mnemonicParsing="false" onAction="#importarCsv" styleClass="btn-secundario" text="Importar CSV" />
+            <Button mnemonicParsing="false" onAction="#nueva" styleClass="btn-primario" text="Nueva candidatura" />
          </children>
       </HBox>
       <VBox spacing="12.0" styleClass="card">
@@ -106,6 +107,8 @@
       </TableView>
       <HBox alignment="CENTER_LEFT" spacing="12.0">
          <children>
+            <Button fx:id="btnDetalle" mnemonicParsing="false" onAction="#verDetalle" styleClass="btn-secundario" text="Ver detalle" />
+            <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#editar" styleClass="btn-secundario" text="Editar" />
             <MenuButton fx:id="mnuEstado" mnemonicParsing="false" styleClass="btn-secundario" text="Cambiar estado" />
             <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#eliminar" styleClass="btn-peligro" text="Eliminar" />
          </children>

@@ -4,7 +4,9 @@ package es.tracker.ui;
  * Pantallas de la aplicación, cada una definida en un archivo FXML.
  */
 public enum Vista {
-    LISTADO("ofertas-list");
+    LISTADO("ofertas-list"),
+    DETALLE("oferta-detail"),
+    FORMULARIO_OFERTA("oferta-form");
 
     private final String archivo;
 

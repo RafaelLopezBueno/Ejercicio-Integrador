@@ -106,6 +106,33 @@
     -fx-font-size: 12px;
 }
 
+.texto-fuerte {
+    -fx-font-weight: bold;
+}
+
+.valor-mono {
+    -fx-font-family: "JetBrains Mono", "Consolas", monospace;
+    -fx-font-size: 13px;
+    -fx-text-fill: -color-texto-suave;
+}
+
+.scroll-limpio, .scroll-limpio > .viewport {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.btn-enlace {
+    -fx-background-color: transparent;
+    -fx-text-fill: -color-primario-oscuro;
+    -fx-font-weight: bold;
+    -fx-padding: 0;
+    -fx-cursor: hand;
+}
+
+.btn-enlace:hover {
+    -fx-underline: true;
+}
+
 /* ---------- Campos de formulario ---------- */
 .text-field, .text-area, .combo-box-base, .date-picker .text-field {
     -fx-background-color: -color-superficie;
