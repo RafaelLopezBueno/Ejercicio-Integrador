@@ -26,3 +26,18 @@ El flujo comienza en la pantalla 01. El menú lateral y el logotipo están enlaz
 - **Tipografía:** Inter (títulos y cuerpo) y JetBrains Mono (monoespaciado), con 7 estilos de texto.
 - **Componentes:** Botón (primario, secundario, peligro), Badge de estado (4), Campo (normal, foco, error), Tarjeta KPI y Logo (isotipo y horizontal).
 - **Layout:** menú lateral de 240 px y contenido con 32 px de margen y 24 px entre bloques, sobre un lienzo de 1440 × 900.
+
+## Implementación en JavaFX (v2.0)
+
+| Pantalla del prototipo | Archivo FXML | Estado |
+|---|---|---|
+| 01 Listado de candidaturas | `ofertas-list.fxml` | Implementada |
+| 02 Detalle de candidatura | `oferta-detail.fxml` | Implementada |
+| 03 Formulario de candidatura | `oferta-form.fxml` | Implementada |
+| 04 Gestión de empresas | `empresas.fxml` | Implementada |
+| 05 Formulario de empresa | `empresa-form.fxml` | Implementada |
+| 06 Gestión de entrevistas | `entrevistas.fxml` | Implementada |
+| 07 Panel de estadísticas | — | v3.0 |
+| 08 Asistente IA | — | v3.0 |
+
+Los colores, la tipografía y los componentes del manual de estilo están en `src/main/resources/css/styles.css` (botones primario, secundario y peligro, campos con estados de foco y error, etiquetas de estado, tablas y tarjetas).

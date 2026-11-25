@@ -36,3 +36,17 @@ Devuelve solo el CSV, sin explicaciones.
 ## Revisión humana
 
 El código generado se compila, se prueba (`./mvnw test`) y se ejecuta con los comandos del `README.md` antes de incluirse en el repositorio. Cada miembro del equipo debe poder explicar el código de las partes que figuran a su nombre en la tabla de contribuciones.
+
+## Instrucciones de la v2.0
+
+1. Migrar la persistencia a JDBC con MySQL: tablas `empresa`, `oferta` y `entrevista` con sus claves foráneas, y script `db/schema.sql`.
+2. Migrar todas las operaciones de la v1.0 a JDBC; ampliar los filtros con salario y combinaciones múltiples; CRUD completo de empresas y entrevistas; cambio de estado de una candidatura; importar el CSV inicial; consultas con `JOIN`; transacciones en las operaciones que afectan a varias tablas.
+3. Configuración de conexión externalizada (`config.properties` o variables de entorno).
+4. Interfaz JavaFX con archivos `.fxml` siguiendo el prototipo de Figma: listado de ofertas con `TableView` y filtros, detalle con empresa y entrevistas, y formularios de ofertas, empresas y entrevistas con validación.
+5. Controladores que gestionan eventos y usan la capa de servicio; navegación entre pantallas con `FXMLLoader`.
+6. Pruebas con JUnit 5, Mockito y H2, e integración opcional sobre MySQL real.
+
+### Limitaciones conocidas
+
+- Los archivos `.fxml` se han escrito siguiendo el formato de Scene Builder, pero no se han diseñado arrastrando componentes en la herramienta. Conviene abrirlos y revisarlos en Scene Builder antes de la entrega.
+- Las llamadas a la base de datos se hacen en el hilo de la interfaz, lo que es suficiente para el volumen de datos del proyecto.
