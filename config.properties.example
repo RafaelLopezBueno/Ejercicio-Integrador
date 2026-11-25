@@ -1,0 +1,8 @@
+# Copia este archivo como config.properties y ajusta los valores.
+# Cualquier propiedad se puede sobrescribir con una variable de entorno:
+# db.url -> TRACKER_DB_URL, db.user -> TRACKER_DB_USER, db.password -> TRACKER_DB_PASSWORD
+db.url=jdbc:mysql://localhost:3308/tracker?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Europe/Madrid
+db.user=tracker
+db.password=tracker_dev
+# Si es true, crea las tablas al arrancar (ejecuta db/schema.sql)
+db.init=true

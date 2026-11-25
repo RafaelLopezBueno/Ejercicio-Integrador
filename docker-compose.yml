@@ -1,0 +1,21 @@
+# Base de datos MySQL para desarrollo local de CandiTrack.
+# Arranque:  docker compose up -d
+# Los valores por defecto son solo para desarrollo; cámbialos con variables de entorno
+# (TRACKER_DB_PASSWORD, TRACKER_DB_ROOT_PASSWORD) o con un archivo .env.
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: tracker-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: tracker
+      MYSQL_USER: tracker
+      MYSQL_PASSWORD: ${TRACKER_DB_PASSWORD:-tracker_dev}
+      MYSQL_ROOT_PASSWORD: ${TRACKER_DB_ROOT_PASSWORD:-root_dev}
+    ports:
+      - "3308:3306"
+    volumes:
+      - tracker-mysql-data:/var/lib/mysql
+
+volumes:
+  tracker-mysql-data:

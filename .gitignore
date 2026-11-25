@@ -10,3 +10,6 @@ target/
 *.zip
 # Datos locales generados por la CLI
 data/candidaturas.txt
+
+config.properties
+.env
