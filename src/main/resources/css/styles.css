@@ -1,0 +1,275 @@
+/* Estilos de CandiTrack. Colores y tipografía definidos en el manual de estilo (Figma). */
+
+.root {
+    -color-primario: #4F46E5;
+    -color-primario-oscuro: #3730A3;
+    -color-primario-claro: #E0E7FF;
+    -color-secundario: #0F766E;
+    -color-secundario-claro: #CCFBF1;
+    -color-fondo: #F4F6FA;
+    -color-superficie: #FFFFFF;
+    -color-borde: #D9DEE7;
+    -color-texto: #1F2937;
+    -color-texto-suave: #5B6475;
+    -color-peligro: #B91C1C;
+
+    -fx-font-family: "Inter", "Segoe UI", sans-serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: -color-texto;
+    -fx-background-color: -color-fondo;
+}
+
+.label {
+    -fx-text-fill: -color-texto;
+}
+
+/* ---------- Menú lateral ---------- */
+.sidebar {
+    -fx-background-color: -color-superficie;
+    -fx-border-color: -color-borde;
+    -fx-border-width: 0 1 0 0;
+    -fx-padding: 24 16 24 16;
+}
+
+.logo-caja {
+    -fx-padding: 0 0 24 0;
+}
+
+.logo-icono {
+    -fx-background-color: -color-primario;
+    -fx-background-radius: 10;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-padding: 6 11 6 11;
+}
+
+.logo-texto {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8;
+    -fx-text-fill: -color-texto-suave;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 11 14 11 14;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: -color-fondo;
+}
+
+.nav-button:selected {
+    -fx-background-color: -color-primario-claro;
+    -fx-text-fill: -color-primario-oscuro;
+    -fx-font-weight: bold;
+}
+
+/* ---------- Contenido ---------- */
+.contenido {
+    -fx-padding: 32;
+}
+
+.titulo-pagina {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.titulo-tarjeta {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.subtitulo {
+    -fx-text-fill: -color-texto-suave;
+}
+
+.card {
+    -fx-background-color: -color-superficie;
+    -fx-background-radius: 12;
+    -fx-border-color: -color-borde;
+    -fx-border-radius: 12;
+    -fx-padding: 20;
+}
+
+.etiqueta-campo {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-texto-suave;
+}
+
+.mensaje-error {
+    -fx-text-fill: -color-peligro;
+    -fx-font-size: 12px;
+}
+
+/* ---------- Campos de formulario ---------- */
+.text-field, .text-area, .combo-box-base, .date-picker .text-field {
+    -fx-background-color: -color-superficie;
+    -fx-background-radius: 8;
+    -fx-border-color: -color-borde;
+    -fx-border-radius: 8;
+    -fx-padding: 8 12 8 12;
+}
+
+.combo-box-base, .date-picker {
+    -fx-padding: 0;
+}
+
+.combo-box-base .list-cell, .combo-box-base > .text-field {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 8 12 8 12;
+}
+
+.date-picker .text-field {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.text-field:focused, .text-area:focused, .combo-box-base:focused, .date-picker:focused {
+    -fx-border-color: -color-primario;
+    -fx-border-width: 2;
+}
+
+.campo-error, .text-field.campo-error, .combo-box-base.campo-error, .date-picker.campo-error {
+    -fx-border-color: -color-peligro;
+    -fx-border-width: 2;
+}
+
+/* ---------- Botones ---------- */
+.btn-primario, .btn-secundario, .btn-peligro {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-font-weight: bold;
+    -fx-padding: 10 18 10 18;
+    -fx-cursor: hand;
+}
+
+.btn-primario {
+    -fx-background-color: -color-primario;
+    -fx-text-fill: white;
+}
+
+.btn-primario:hover {
+    -fx-background-color: -color-primario-oscuro;
+}
+
+.btn-secundario {
+    -fx-background-color: -color-superficie;
+    -fx-border-color: -color-primario;
+    -fx-border-width: 1.5;
+    -fx-text-fill: -color-primario;
+}
+
+.btn-secundario .label, .btn-secundario .arrow {
+    -fx-text-fill: -color-primario;
+}
+
+.btn-secundario:hover {
+    -fx-background-color: -color-primario-claro;
+}
+
+.btn-peligro {
+    -fx-background-color: -color-peligro;
+    -fx-text-fill: white;
+}
+
+.btn-primario:disabled, .btn-secundario:disabled, .btn-peligro:disabled {
+    -fx-opacity: 0.45;
+}
+
+/* ---------- Tablas ---------- */
+.table-view {
+    -fx-background-color: -color-superficie;
+    -fx-background-radius: 12;
+    -fx-border-color: -color-borde;
+    -fx-border-radius: 12;
+    -fx-padding: 0;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: -color-fondo;
+    -fx-background-radius: 12 12 0 0;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: transparent;
+    -fx-size: 42;
+    -fx-border-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-texto-suave;
+}
+
+.table-row-cell {
+    -fx-background-color: -color-superficie;
+    -fx-cell-size: 48;
+    -fx-border-color: transparent transparent -color-borde transparent;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #F8F9FC;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: -color-primario-claro;
+}
+
+.table-row-cell:selected .text, .table-row-cell:selected .label {
+    -fx-fill: -color-primario-oscuro;
+    -fx-text-fill: -color-primario-oscuro;
+}
+
+.table-cell {
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 8 0 8;
+}
+
+.columna-derecha {
+    -fx-alignment: CENTER_RIGHT;
+}
+
+/* ---------- Etiquetas de estado ---------- */
+.badge {
+    -fx-background-radius: 999;
+    -fx-padding: 3 10 3 10;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.badge-pendiente {
+    -fx-background-color: #FEF3C7;
+    -fx-text-fill: #B45309;
+}
+
+.badge-entrevista {
+    -fx-background-color: #E0F2FE;
+    -fx-text-fill: #075985;
+}
+
+.badge-rechazado {
+    -fx-background-color: #FEE2E2;
+    -fx-text-fill: #B91C1C;
+}
+
+.badge-aceptado {
+    -fx-background-color: #DCFCE7;
+    -fx-text-fill: #166534;
+}
+
+.badge-aprobada {
+    -fx-background-color: #DCFCE7;
+    -fx-text-fill: #166534;
+}
+
+.badge-rechazada {
+    -fx-background-color: #FEE2E2;
+    -fx-text-fill: #B91C1C;
+}

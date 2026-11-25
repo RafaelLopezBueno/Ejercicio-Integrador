@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="800.0" prefWidth="1280.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.tracker.ui.MainController">
+   <left>
+      <VBox prefWidth="240.0" spacing="6.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="logo-caja">
+               <children>
+                  <Label styleClass="logo-icono" text="✓" />
+                  <Label styleClass="logo-texto" text="CandiTrack" />
+               </children>
+            </HBox>
+            <ToggleButton fx:id="btnOfertas" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#irAOfertas" styleClass="nav-button" text="Candidaturas">
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupoNavegacion" />
+               </toggleGroup>
+            </ToggleButton>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <StackPane fx:id="contenido" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
